@@ -4,8 +4,8 @@
   "main": "index.js",
   "scripts": {
     "start": "backpack",
-		"server":"node build/",
-		"test": "echo \"Error: no test specified\" && exit1"
+    "server": "node build/",
+    "test": "echo \"Error: no test specified\" && exit1"
   },
   "keywords": [],
   "author": "",

@@ -84,42 +84,26 @@ module.exports = __webpack_require__(2);
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* WEBPACK VAR INJECTION */(function(__dirname) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_express__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_express__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_express___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_express__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_dotenv_config__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_dotenv_config___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_dotenv_config__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_mongoose__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_mongoose___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_mongoose__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__routes_route__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_path__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_path___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_path__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_volleyball__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_volleyball___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_volleyball__);
 
 
 const app = __WEBPACK_IMPORTED_MODULE_0_express___default()();
 
-
-
-
-const { SERVER_PORT, DBUrl } = process.env;
-
-__WEBPACK_IMPORTED_MODULE_2_mongoose___default.a.connect(DBUrl);
-__WEBPACK_IMPORTED_MODULE_2_mongoose___default.a.connection.on("connected", () => {
-	console.log("the mongo is working 27017");
-});
+app.use(__WEBPACK_IMPORTED_MODULE_2_volleyball___default.a);
+const { SERVER_PORT } = process.env;
 
 app.listen(SERVER_PORT, () => {
 	console.log(`ca marche sur le port ${SERVER_PORT}`);
 });
 
-app.use(__WEBPACK_IMPORTED_MODULE_0_express___default.a.json());
-app.use(__WEBPACK_IMPORTED_MODULE_0_express___default.a.urlencoded({ extended: false }));
-app.use(__WEBPACK_IMPORTED_MODULE_0_express___default.a.static(__WEBPACK_IMPORTED_MODULE_4_path___default.a.join(__dirname, "public")));
-
-app.set("views", __WEBPACK_IMPORTED_MODULE_4_path___default.a.join(__dirname, "views"));
-app.set("view engine", "html");
-
-app.use("/courses", __WEBPACK_IMPORTED_MODULE_3__routes_route__["a" /* default */]);
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, "src"))
+app.get("/", (req, res) => {
+	res.send("coucou");
+});
 
 /***/ }),
 /* 3 */
@@ -128,32 +112,13 @@ app.use("/courses", __WEBPACK_IMPORTED_MODULE_3__routes_route__["a" /* default *
 module.exports = require("dotenv/config");
 
 /***/ }),
-/* 4 */
+/* 4 */,
+/* 5 */,
+/* 6 */,
+/* 7 */
 /***/ (function(module, exports) {
 
-module.exports = require("mongoose");
-
-/***/ }),
-/* 5 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_express__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_express___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_express__);
-
-const coursesRouter = __WEBPACK_IMPORTED_MODULE_0_express___default.a.Router();
-
-coursesRouter.get("/", (req, res) => {
-	res.render("sources");
-});
-
-/* harmony default export */ __webpack_exports__["a"] = (coursesRouter);
-
-/***/ }),
-/* 6 */
-/***/ (function(module, exports) {
-
-module.exports = require("path");
+module.exports = require("volleyball");
 
 /***/ })
 /******/ ]);
